@@ -6,7 +6,7 @@ class Crunch {
 public:
 	Crunch() =	default;
 	void input_params(const std::vector<std::string> &params);
-	void generate_txt(std::string name_txt, std::vector<std::string> data);
+	void generate_txt(std::string &name_txt,const std::vector<std::string> &data);
 	void genera_code(const int &min,const int &max,const std::string &cad,std::string cur);
 
 	// esta funcion se va a llamar mucho
