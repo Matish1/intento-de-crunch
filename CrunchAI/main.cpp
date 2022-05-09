@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
+#include <iomanip>
 
 #include "Crunch.h"
 
@@ -30,6 +31,17 @@ void program(const std::vector<std::string> &commandLine) {
 }
 
 
+
+// Debemos eliminar el caracter de salto de linea de la cadena
+void removeZero(std::string &str) {
+	int i = 0;
+	while (str[i] == '\n')
+		i++;
+	str.erase(0, i);
+}
+
+
+
 void menuOption() {
 	int op;
 	do {
@@ -51,10 +63,15 @@ void menuOption() {
 				for (int i = 0; i < command_line_string.size(); i++) {
 					concat_string += command_line_string[i];
 					if (command_line_string[i] == ' ' || i == command_line_string.size()-1) {
+						removeZero(concat_string);
 						command_line.push_back(concat_string);
 						concat_string = "";
 					}
 				}
+				for (std::string ite : command_line) {
+					std::cout << ite << std::setw(2);
+				}
+				std::cout << std::endl;
 				program(command_line);
 				break;
 			}
